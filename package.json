@@ -1,0 +1,22 @@
+{
+  "name": "logc",
+  "version": "0.1.0",
+  "description": "Minimal logging library.",
+  "main": "src/core.ts",
+  "scripts": {
+    "test": "mocha ./tests"
+  },
+  "keywords": ["log", "logging", "logger", "colors", "time", "node.js", "typescript", "documented"],
+  "author": "Louis Stanko",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+
+  "devDependencies": {
+    "@types/mocha": "^9.1.0",
+    "mocha": "^9.2.1",
+    "typescript": "^4.6.2"
+  }
+}
