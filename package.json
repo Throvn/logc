@@ -11,8 +11,15 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/Throvn/logc"
   },
+  "bugs": {
+    "url": "https://github.com/Throvn/logc/issues"
+  },
+  "private": false,
+  "publishConfig": {
+        "access": "public"
+    },
 
   "devDependencies": {
     "@types/mocha": "^9.1.0",
