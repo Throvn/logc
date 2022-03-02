@@ -1,27 +1,29 @@
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.logTimeprecise = exports.logTime = exports.logError = exports.logWarning = exports.logInfo = exports.clog = void 0;
+exports.logTimePrecise = exports.logTime = exports.logError = exports.logWarning = exports.logInfo = exports.logc = exports.log = void 0;
 function _log(callback, parentName, icon, args) {
     if (parentName) {
-        callback(icon + "\033[3m\033[4m" + parentName + "\033[0m\033[3m():\033[0m ", ...args);
+        callback(icon + " \033[3m\033[4m" + parentName + "\033[0m\033[3m()\033[0m: ", ...args);
     }
     else
-        callback(icon + "🌎 ", ...args);
+        callback(icon, ...args);
 }
 /**
  * Writes arguments to the console output.
  * @param args arguments to show on the console output.
  */
 function log(...args) {
-    _log(console.log, log.caller.name, "    ", args);
+    _log(console.log, log.caller.name, "   ", args);
 }
+exports.log = log;
 const logc = log;
+exports.logc = logc;
 /**
  * Writes arguments to the console output. As `info`.
  * @param args arguments to show on the console output.
  * @alias console.info()
  */
 function logInfo(...args) {
-    _log(console.info, logInfo.caller.name, "\x1b[44m i \x1b[0m ", args);
+    _log(console.info, logInfo.caller.name, "\x1b[44m i \x1b[0m", args);
 }
 exports.logInfo = logInfo;
 /**
@@ -30,7 +32,7 @@ exports.logInfo = logInfo;
  * @alias console.warn()
  */
 function logWarning(...args) {
-    _log(console.warn, logWarning.caller.name, "\x1b[43m ! \x1b[0m ", args);
+    _log(console.warn, logWarning.caller.name, "\x1b[43m ! \x1b[0m", args);
 }
 exports.logWarning = logWarning;
 /**
@@ -38,7 +40,7 @@ exports.logWarning = logWarning;
  * @param args arguments to show on the console error output.
  */
 function logError(...args) {
-    _log(console.error, logError.caller.name, "\x1b[41m x \x1b[0m ", args);
+    _log(console.error, logError.caller.name, "\x1b[41m x \x1b[0m", args);
 }
 exports.logError = logError;
 /**
@@ -56,6 +58,7 @@ exports.logTime = logTime;
 function logTimePrecise(...args) {
     _logTime(true, args);
 }
+exports.logTimePrecise = logTimePrecise;
 /**
  * HELPER FUNCTION: Logs the `args` with the **local** time.
  * @param precise Whether to show milliseconds
@@ -67,5 +70,5 @@ function _logTime(precise, ...args) {
     const minutes = date.getMinutes() < 10 ? "0" + date.getMinutes() : "" + date.getMinutes();
     const seconds = date.getSeconds() < 10 ? "0" + date.getSeconds() : "" + date.getSeconds();
     const milliseconds = "" + date.getMilliseconds();
-    console.log(`   [${"\033[3m"}${hours}:${minutes}:${seconds}${precise ? ":" + milliseconds : ""}${"\033[0m"}]: `, ...args);
+    console.log(`    [${"\033[3m"}${hours}:${minutes}:${seconds}${precise ? ":" + milliseconds : ""}${"\033[0m"}]: `, ...args);
 }

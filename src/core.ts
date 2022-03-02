@@ -6,10 +6,10 @@ function _log(
 ): void {
   if (parentName) {
     callback(
-      icon + "\033[3m\033[4m" + parentName + "\033[0m\033[3m():\033[0m ",
+      icon + " \033[3m\033[4m" + parentName + "\033[0m\033[3m()\033[0m: ",
       ...args
     );
-  } else callback(icon + "🌎 ", ...args);
+  } else callback(icon, ...args);
 }
 
 /**
@@ -17,7 +17,7 @@ function _log(
  * @param args arguments to show on the console output.
  */
 function log(...args: any[]): void {
-  _log(console.log, log.caller.name, "    ", args);
+  _log(console.log, log.caller.name, "   ", args);
 }
 const logc = log;
 
@@ -27,7 +27,7 @@ const logc = log;
  * @alias console.info()
  */
 function logInfo(...args: any[]): void {
-  _log(console.info, logInfo.caller.name, "\x1b[44m i \x1b[0m ", args);
+  _log(console.info, logInfo.caller.name, "\x1b[44m i \x1b[0m", args);
 }
 
 /**
@@ -36,7 +36,7 @@ function logInfo(...args: any[]): void {
  * @alias console.warn()
  */
 function logWarning(...args: any[]): void {
-  _log(console.warn, logWarning.caller.name, "\x1b[43m ! \x1b[0m ", args);
+  _log(console.warn, logWarning.caller.name, "\x1b[43m ! \x1b[0m", args);
 }
 
 /**
@@ -44,7 +44,7 @@ function logWarning(...args: any[]): void {
  * @param args arguments to show on the console error output.
  */
 function logError(...args: any[]): void {
-  _log(console.error, logError.caller.name, "\x1b[41m x \x1b[0m ", args);
+  _log(console.error, logError.caller.name, "\x1b[41m x \x1b[0m", args);
 }
 
 /**
@@ -78,11 +78,11 @@ function _logTime(precise: boolean, ...args: any[]) {
     date.getSeconds() < 10 ? "0" + date.getSeconds() : "" + date.getSeconds();
   const milliseconds: string = "" + date.getMilliseconds();
   console.log(
-    `   [${"\033[3m"}${hours}:${minutes}:${seconds}${
+    `    [${"\033[3m"}${hours}:${minutes}:${seconds}${
       precise ? ":" + milliseconds : ""
     }${"\033[0m"}]: `,
     ...args
   );
 }
 
-export { clog, logInfo, logWarning, logError, logTime, logTimeprecise };
+export { log, logc, logInfo, logWarning, logError, logTime, logTimePrecise };

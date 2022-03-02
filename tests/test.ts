@@ -1,29 +1,40 @@
 import {
-  clog,
+  log,
+  logc,
   logInfo,
   logWarning,
   logError,
   logTime,
-  logTimePercise,
+  logTimePrecise,
 } from "../src/core";
 
 describe("Default Logging", function () {
   it("Should correctly log to the console.", function () {
-    clog("hello");
+    log("hello");
     logInfo("aha");
     logWarning(1235325);
     logError([{ error: "test" }]);
 
     const broHoHo = () => {
-      clog("hello");
+      log("hello");
       logInfo("aha");
       logWarning(1235325);
       logError([{ error: "test" }]);
       console.time("lol");
-      clog("wut");
+      logc("wut");
       logTime({ milis: true });
-      logTimePercise({ no: true });
+      logTimePrecise({ no: true });
     };
     broHoHo();
+
+    logInfo("This is an example.");
+
+    function example(arg: any) {
+      // do some logic here
+
+      log(arg);
+    }
+
+    example("arg");
   });
 });
