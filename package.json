@@ -1,12 +1,21 @@
 {
-  "name": "logc",
-  "version": "0.1.0",
+  "name": "@throvn/logc",
+  "version": "0.1.1",
   "description": "Minimal logging library.",
-  "main": "src/core.ts",
+  "main": "build/core.js",
   "scripts": {
     "test": "mocha ./tests"
   },
-  "keywords": ["log", "logging", "logger", "colors", "time", "node.js", "typescript", "documented"],
+  "keywords": [
+    "log",
+    "logging",
+    "logger",
+    "colors",
+    "time",
+    "node.js",
+    "typescript",
+    "documented"
+  ],
   "author": "Louis Stanko",
   "license": "MIT",
   "repository": {
@@ -18,12 +27,14 @@
   },
   "private": false,
   "publishConfig": {
-        "access": "public"
-    },
-
+    "access": "public"
+  },
   "devDependencies": {
     "@types/mocha": "^9.1.0",
     "mocha": "^9.2.1",
     "typescript": "^4.6.2"
+  },
+  "dependencies": {
+    "@throvn/logc": "^0.1.0"
   }
 }

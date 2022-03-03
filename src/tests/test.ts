@@ -6,7 +6,7 @@ import {
   logError,
   logTime,
   logTimePrecise,
-} from "../src/core";
+} from "@throvn/logc";
 
 describe("Default Logging", function () {
   it("Should correctly log to the console.", function () {

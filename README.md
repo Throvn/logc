@@ -7,13 +7,13 @@ This is a personal project of mine, which fixes a few issues I find annoying wit
 ## Installation / Usage
 
 ```sh
-npm i logc
+npm i @throvn/logc
 ```
 
 your/project/index.ts
 
 ```ts
-import { log, logInfo } from "logc";
+import { log, logInfo } from "@throvn/logc";
 logInfo("This is an example.");
 
 function example(arg: any) {
