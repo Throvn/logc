@@ -1,12 +1,12 @@
 function _log(
   callback: (...arg0: any[]) => void,
-  parentName: string,
+  parent: Function,
   icon: string,
   args: any[]
 ): void {
-  if (parentName) {
+  if (parent && parent.name) {
     callback(
-      icon + " \033[3m\033[4m" + parentName + "\033[0m\033[3m()\033[0m: ",
+      icon + " \033[3m\033[4m" + parent.name + "\033[0m\033[3m()\033[0m: ",
       ...args
     );
   } else callback(icon, ...args);
@@ -17,7 +17,7 @@ function _log(
  * @param args arguments to show on the console output.
  */
 function log(...args: any[]): void {
-  _log(console.log, log.caller.name, "   ", args);
+  _log(console.log, log.caller, "   ", args);
 }
 const logc = log;
 
@@ -27,7 +27,7 @@ const logc = log;
  * @alias console.info()
  */
 function logInfo(...args: any[]): void {
-  _log(console.info, logInfo.caller.name, "\x1b[44m i \x1b[0m", args);
+  _log(console.info, logInfo.caller, "\x1b[44m i \x1b[0m", args);
 }
 
 /**
@@ -36,7 +36,7 @@ function logInfo(...args: any[]): void {
  * @alias console.warn()
  */
 function logWarning(...args: any[]): void {
-  _log(console.warn, logWarning.caller.name, "\x1b[43m ! \x1b[0m", args);
+  _log(console.warn, logWarning.caller, "\x1b[43m ! \x1b[0m", args);
 }
 
 /**
@@ -44,7 +44,7 @@ function logWarning(...args: any[]): void {
  * @param args arguments to show on the console error output.
  */
 function logError(...args: any[]): void {
-  _log(console.error, logError.caller.name, "\x1b[41m x \x1b[0m", args);
+  _log(console.error, logError.caller, "\x1b[41m x \x1b[0m", args);
 }
 
 /**
