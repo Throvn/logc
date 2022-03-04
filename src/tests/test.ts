@@ -29,11 +29,11 @@ describe("Default Logging", function () {
 
     logInfo("This is an example.");
 
-    function example(arg: any) {
+    const example = (arg: any) => {
       // do some logic here
 
       log(arg);
-    }
+    };
 
     example("arg");
   });

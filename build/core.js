@@ -1,8 +1,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.logTimePrecise = exports.logTime = exports.logError = exports.logWarning = exports.logInfo = exports.logc = exports.log = void 0;
-function _log(callback, parentName, icon, args) {
-    if (parentName) {
-        callback(icon + " \033[3m\033[4m" + parentName + "\033[0m\033[3m()\033[0m: ", ...args);
+function _log(callback, parent, icon, args) {
+    if (parent && parent.name) {
+        callback(icon + " \033[3m\033[4m" + parent.name + "\033[0m\033[3m()\033[0m: ", ...args);
     }
     else
         callback(icon, ...args);
@@ -12,7 +12,7 @@ function _log(callback, parentName, icon, args) {
  * @param args arguments to show on the console output.
  */
 function log(...args) {
-    _log(console.log, log.caller.name, "   ", args);
+    _log(console.log, log.caller, "   ", args);
 }
 exports.log = log;
 const logc = log;
@@ -23,7 +23,7 @@ exports.logc = logc;
  * @alias console.info()
  */
 function logInfo(...args) {
-    _log(console.info, logInfo.caller.name, "\x1b[44m i \x1b[0m", args);
+    _log(console.info, logInfo.caller, "\x1b[44m i \x1b[0m", args);
 }
 exports.logInfo = logInfo;
 /**
@@ -32,7 +32,7 @@ exports.logInfo = logInfo;
  * @alias console.warn()
  */
 function logWarning(...args) {
-    _log(console.warn, logWarning.caller.name, "\x1b[43m ! \x1b[0m", args);
+    _log(console.warn, logWarning.caller, "\x1b[43m ! \x1b[0m", args);
 }
 exports.logWarning = logWarning;
 /**
@@ -40,7 +40,7 @@ exports.logWarning = logWarning;
  * @param args arguments to show on the console error output.
  */
 function logError(...args) {
-    _log(console.error, logError.caller.name, "\x1b[41m x \x1b[0m", args);
+    _log(console.error, logError.caller, "\x1b[41m x \x1b[0m", args);
 }
 exports.logError = logError;
 /**

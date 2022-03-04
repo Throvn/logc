@@ -18,10 +18,10 @@ describe("Default Logging", function () {
         };
         broHoHo();
         (0, core_1.logInfo)("This is an example.");
-        function example(arg) {
+        const example = (arg) => {
             // do some logic here
             (0, core_1.log)(arg);
-        }
+        };
         example("arg");
     });
 });
