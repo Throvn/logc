@@ -6,8 +6,16 @@ This is a personal project of mine, which fixes a few issues I find annoying wit
 
 ## Installation / Usage
 
+**Node.js**
+
 ```sh
 npm i @throvn/logc
+```
+
+**Browser**
+
+```curl
+https://cdn.jsdelivr.net/npm/@throvn/logc/build/core.js
 ```
 
 your/project/index.ts
