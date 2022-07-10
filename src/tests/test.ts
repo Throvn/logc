@@ -7,34 +7,12 @@ import {
   logTime,
   logTimePrecise,
 } from "../core";
+import { expect } from "chai";
 
 describe("Default Logging", function () {
-  it("Should correctly log to the console.", function () {
-    log("hello");
-    logInfo("aha");
-    logWarning(1235325);
-    logError([{ error: "test" }]);
 
-    const broHoHo = () => {
-      log("hello");
-      logInfo("aha");
-      logWarning(1235325);
-      logError([{ error: "test" }]);
-      console.time("lol");
-      logc("wut");
-      logTime({ milis: true });
-      logTimePrecise({ no: true });
-    };
-    broHoHo();
-
-    logInfo("This is an example.");
-
-    const example = (arg: any) => {
-      // do some logic here
-
-      log(arg);
-    };
-
-    example("arg");
+  it("Should correctly log to the console", function () {
+    logError("This is still a todo.");
+    expect(false).to.be.true;
   });
 });
